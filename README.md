@@ -25,16 +25,7 @@ Aplikasi ini memungkinkan klien untuk memesan paket pernikahan, melakukan konfir
 ---
 
 ## 🧰 Teknologi yang Digunakan
-weddingorg-pro/
-├── index.html # Halaman utama (frontend klien)
-├── admin.html # Dashboard admin
-├── dashboard.html # Panel klien
-├── server.js # Server backend Express.js
-├── authMiddleware.js # Middleware autentikasi JWT
-├── adminOnlyMiddleware.js # Middleware pembatasan akses admin
-├── .env # Konfigurasi environment
-├── uploads/ # Folder penyimpanan bukti bayar
-└── README.md # Dokumentasi proyek
+
 
 | Bagian | Teknologi |
 |--------|------------|
@@ -50,4 +41,13 @@ weddingorg-pro/
 ---
 
 ## 📂 Struktur Proyek
-
+weddingorg-pro/
+├── index.html # Halaman utama (frontend klien)
+├── admin.html # Dashboard admin
+├── dashboard.html # Panel klien
+├── server.js # Server backend Express.js
+├── authMiddleware.js # Middleware autentikasi JWT
+├── adminOnlyMiddleware.js # Middleware pembatasan akses admin
+├── .env # Konfigurasi environment
+├── uploads/ # Folder penyimpanan bukti bayar
+└── README.md # Dokumentasi proyek
