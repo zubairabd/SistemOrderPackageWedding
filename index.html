@@ -8,31 +8,26 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
-        /* Menggunakan font Inter dari Tailwind */
+
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Efek smooth scroll saat klik nav link */
-        html {
+            html {
             scroll-behavior: smooth;
         }
-        /* Custom class untuk hero background */
+      
         .hero-bg {
-            /* PETUNJUK: 
-             Ganti 'hero-background.jpg' dengan nama file Anda di folder 'SistemWedding'
-            */
-            
-            /* URL DIGANTI DENGAN PICSUM.PHOTOS (BACKGROUND) */
+   
             background-image: url('https://picsum.photos/seed/wedding/1920/1080');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; /* Parallax effect */
         }
-        /* Penyesuaian untuk background di bagian lain */
+     
         .section-bg-pattern {
-            /* Pola titik-titik halus untuk latar belakang */
+          
             background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23fcfbe0" fill-opacity="0.4"%3E%3Cpath d="M96 95h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zM24 2h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm-90 2h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm-81 2h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zM31 16h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zM4 22h1v4H4V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm-90 2h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm-81 2h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zM54 32h1v4h-1V32zm16 0h1v4h-1V32zm16 0h1v4h-1V32zm-90 2h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm-81 2h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zM8 42h1v4H8V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm-90 2h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm-81 2h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1D" /%3E%3C/svg%3E');
-            background-size: 100px; /* Ukuran pola */
+            background-size: 100px; 
             background-repeat: repeat;
         }
         /* Style untuk modal */
@@ -309,7 +304,7 @@
         
         <div class="mt-12 border-t border-gray-800 pt-8">
             <p class="text-center text-gray-500 text-sm">
-                © 2025 WeddingOrg Pro. Semua Hak Cipta Dilindungi.
+                © 2025 ElinfZubs. Semua Hak Cipta Dilindungi.
             </p>
         </div>
     </footer>
@@ -411,32 +406,32 @@
                 });
             });
 
-            // --- Logika Modal (Pop-up Login/Register) ---
+          
             const authModal = document.getElementById('auth-modal');
             const modalBackdrop = document.getElementById('modal-backdrop');
             const loginFormContainer = document.getElementById('login-form-container');
             const registerFormContainer = document.getElementById('register-form-container');
             
-            // Tombol-tombol untuk membuka modal
+           
             const openModalBtns = [
                 document.getElementById('login-register-btn'),
                 document.getElementById('login-register-btn-mobile')
             ];
 
-            // Tombol-tombol untuk menutup modal
+       
             const closeModalBtns = [
                 document.getElementById('modal-close-btn'),
                 document.getElementById('modal-close-btn-register'),
                 modalBackdrop
             ];
 
-            // Tombol-tombol untuk ganti form
+     
             const showRegisterBtn = document.getElementById('show-register-form');
             const showLoginBtn = document.getElementById('show-login-form');
 
-            // Fungsi untuk membuka modal
+          
             const openModal = () => {
-                // Reset ke form login dulu
+               
                 loginFormContainer.classList.remove('hidden');
                 registerFormContainer.classList.add('hidden');
                 authModal.classList.remove('hidden');
@@ -456,7 +451,7 @@
                 
                 setTimeout(() => {
                     authModal.classList.add('hidden');
-                }, 300); // Sesuaikan dengan durasi transisi
+                }, 300); 
             };
             
             // Pasang event listener
@@ -476,7 +471,6 @@
             });
 
 
-            // --- Logika Submit Form (Contoh Sederhana) ---
             
             // Form Login
             const loginForm = document.getElementById('login-form');
@@ -519,7 +513,7 @@
                     return;
                 }
 
-                // Simulasi berhasil
+               
                 registerSuccess.textContent = 'Registrasi berhasil! Silakan login.';
                 registerSuccess.classList.remove('hidden');
                 
@@ -536,4 +530,5 @@
     </script>
 
 </body>
+
 </html>
