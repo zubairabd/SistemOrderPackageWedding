@@ -178,7 +178,7 @@
             const totalRevenueEl = document.getElementById('total-revenue');
             const totalPaidOrdersEl = document.getElementById('total-paid-orders');
 
-             console.log("calendarGridBody element:", calendarGridBody ? 'Found' : 'NOT FOUND!'); // DEBUG
+             console.log("calendarGridBody element:", calendarGridBody ? 'Found' : 'NOT FOUND!');
 
             let currentDate = new Date();
             let allOrdersData = []; 
@@ -220,16 +220,15 @@
             
             // --- Event Listener di Parent (Event Delegation) ---
             if (calendarGridBody) {
-                 console.log("[Event Delegation] Adding listener to calendarGridBody."); // DEBUG
+                 console.log("[Event Delegation] Adding listener to calendarGridBody.");
                 calendarGridBody.addEventListener('click', (event) => {
-                    console.log("[Event Delegation] Click detected inside grid body."); // DEBUG
-                    const clickedDay = event.target.closest('.calendar-day.has-booking'); // Cari parent .calendar-day.has-booking
+                    console.log("[Event Delegation] Click detected inside grid body."); 
+                    const clickedDay = event.target.closest('.calendar-day.has-booking');
                     
                     if (clickedDay) {
                         const dateStr = clickedDay.dataset.date;
-                        console.log(`[Event Delegation] Clicked on booked date cell: ${dateStr}`); // DEBUG
+                        console.log(`[Event Delegation] Clicked on booked date cell: ${dateStr}`); 
                         
-                        // DEBUG: Tampilkan semua data order sebelum filter
                         console.log("[Event Delegation] All orders data before filter:", allOrdersData.map(o => ({ date: formatDate(o.tanggal_pernikahan), status: o.status_pesanan })) ); 
 
                         const ordersOnThisDate = allOrdersData.filter(order => 
@@ -238,25 +237,25 @@
                             order.status_pesanan !== 'Selesai'
                         );
                         
-                        // DEBUG: Tampilkan hasil filter
+                        
                         console.log(`[Event Delegation] Found ${ordersOnThisDate.length} active order(s) for ${dateStr}:`, ordersOnThisDate); 
 
                         if (ordersOnThisDate.length > 0) {
-                             showBookingDetails(dateStr, ordersOnThisDate); // Panggil fungsi detail
+                             showBookingDetails(dateStr, ordersOnThisDate); 
                             // Highlight
                             document.querySelectorAll('.calendar-day.selected').forEach(el => el.classList.remove('selected', 'bg-amber-300', 'border', 'border-amber-400')); 
                             clickedDay.classList.add('selected', 'bg-amber-300', 'border', 'border-amber-400'); 
                         } else {
-                            console.warn(`[Event Delegation] Clicked ${dateStr} but filter found no active orders?`); // DEBUG
+                            console.warn(`[Event Delegation] Clicked ${dateStr} but filter found no active orders?`);
                             eventDetailsContainer.innerHTML = `<h4 class="font-semibold text-lg mb-2">${formatDateLong(dateStr)}</h4><p class="text-gray-500">Tidak ada detail acara aktif ditemukan untuk tanggal ini.</p>`;
                             checklistContainer.classList.add('hidden');
                         }
                     } else {
-                        console.log("[Event Delegation] Clicked on empty or non-booking cell."); // DEBUG
+                        console.log("[Event Delegation] Clicked on empty or non-booking cell.");
                     }
                 });
             } else {
-                 console.error("FATAL ERROR: calendarGridBody element not found! Click listener cannot be added."); // DEBUG
+                 console.error("FATAL ERROR: calendarGridBody element not found! Click listener cannot be added.");
             }
 
 
@@ -326,9 +325,9 @@
                     const ordersResponse = await fetch(`${API_URL}/admin/orders`, { headers: { 'x-auth-token': token } });
                     if (!ordersResponse.ok) { const errTxt = await ordersResponse.text(); console.error("[loadAdminData] Failed fetch orders:", ordersResponse.status, errTxt); throw new Error(`Gagal load orders (${ordersResponse.status}).`); }
                     allOrdersData = await ordersResponse.json(); 
-                    console.log("[loadAdminData] Orders data (raw):", allOrdersData); // DEBUG Raw Data
+                    console.log("[loadAdminData] Orders data (raw):", allOrdersData); 
                     
-                    // DEBUG: Cek format tanggal dari API
+                   
                     if (allOrdersData.length > 0) {
                         console.log("[loadAdminData] Example order date from API:", allOrdersData[0].tanggal_pernikahan);
                         console.log("[loadAdminData] Example formatted date:", formatDate(allOrdersData[0].tanggal_pernikahan));
@@ -404,13 +403,14 @@
                 }
             });
 
-            // Handler Logout
+            
             document.getElementById('logout-btn-admin').addEventListener('click', () => { if (confirm('Yakin logout?')) { console.log("Logging out..."); localStorage.removeItem('token'); localStorage.removeItem('user'); window.location.href = 'index.html'; } });
 
-            // Panggil fungsi utama
+            
             loadAdminData();
         });
     </script>
 </body>
 </html>
+
 
