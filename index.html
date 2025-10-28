@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeddingOrg Pro - Wujudkan Pernikahan Impian Anda</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Menggunakan font Inter dari Tailwind */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efek smooth scroll saat klik nav link */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom class untuk hero background */
+        .hero-bg {
+            /* PETUNJUK: 
+             Ganti 'hero-background.jpg' dengan nama file Anda di folder 'SistemWedding'
+            */
+            
+            /* URL DIGANTI DENGAN PICSUM.PHOTOS (BACKGROUND) */
+            background-image: url('https://picsum.photos/seed/wedding/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+        }
+        /* Penyesuaian untuk background di bagian lain */
+        .section-bg-pattern {
+            /* Pola titik-titik halus untuk latar belakang */
+            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23fcfbe0" fill-opacity="0.4"%3E%3Cpath d="M96 95h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zM24 2h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm16 0h1v4h-1V2zm-90 2h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm9 0h4v1h-4V4zm-81 2h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zm9 0h4v1h-4V6zM31 16h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zm-9 1h4v1h-4v-1zM4 22h1v4H4V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm16 0h1v4h-1V22zm-90 2h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm9 0h4v1h-4V24zm-81 2h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zm9 0h4v1h-4V26zM54 32h1v4h-1V32zm16 0h1v4h-1V32zm16 0h1v4h-1V32zm-90 2h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm9 0h4v1h-4V34zm-81 2h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zm9 0h4v1h-4V36zM8 42h1v4H8V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm16 0h1v4h-1V42zm-90 2h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm9 0h4v1h-4V44zm-81 2h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1h-4V46zm9 0h4v1D" /%3E%3C/svg%3E');
+            background-size: 100px; /* Ukuran pola */
+            background-repeat: repeat;
+        }
+        /* Style untuk modal */
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+        .modal-content {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            
+            <a href="#" class="text-3xl font-bold text-amber-800">WeddingOrg Pro</a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-amber-800 transition duration-200">Home</a>
+                <a href="#layanan" class="text-gray-600 hover:text-amber-800 transition duration-200">Layanan</a>
+                <a href="#paket" class="text-gray-600 hover:text-amber-800 transition duration-200">Paket</a>
+                <a href="#galeri" class="text-gray-600 hover:text-amber-800 transition duration-200">Galeri</a>
+                <a href="#kontak" class="text-gray-600 hover:text-amber-800 transition duration-200">Kontak</a>
+            </div>
+            
+            <div class="hidden md:block">
+                <button id="login-register-btn" class="bg-amber-700 text-white py-2 px-6 rounded-lg shadow font-semibold hover:bg-amber-800 transition duration-200">
+                    Login Klien
+                </button>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-gray-700 p-2 rounded-md hover:bg-gray-100">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg border-t">
+            <a href="#home" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-amber-800">Home</a>
+            <a href="#layanan" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-amber-800">Layanan</a>
+            <a href="#paket" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-amber-800">Paket</a>
+            <a href="#galeri" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-amber-800">Galeri</a>
+            <a href="#kontak" class="block py-3 px-4 text-gray-600 hover:bg-gray-50 hover:text-amber-800">Kontak</a>
+            <div class="p-4">
+                <button id="login-register-btn-mobile" class="w-full bg-amber-700 text-white py-2 px-6 rounded-lg shadow font-semibold hover:bg-amber-800 transition duration-200">
+                    Login Klien
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="home" class="h-[calc(100vh-80px)] hero-bg relative flex items-center justify-center text-center text-white">
+            
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            
+            <div class="relative z-10 p-4 flex flex-col items-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-fade-in-down">
+                    Wujudkan Pernikahan Impian Anda
+                </h1>
+                <p class="text-lg md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
+                    Biarkan kami yang mengurus setiap detailnya. Anda hanya perlu menikmati momen bahagia.
+                </p>
+
+                <a href="#paket" class="bg-amber-700 text-white py-3 px-10 rounded-lg text-lg font-semibold hover:bg-amber-800 transition duration-200 shadow-lg">
+                    Lihat Pilihan Paket
+                </a>
+            </div>
+        </section>
+
+        <section id="layanan" class="py-20 bg-stone-50 relative overflow-hidden">
+            <div class="absolute inset-0 section-bg-pattern z-0"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Layanan Terbaik Kami</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Kami menyediakan semua yang Anda butuhkan untuk hari spesial Anda.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <div class="bg-amber-50 text-amber-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Perencanaan A-Z</h3>
+                        <p class="text-gray-600">Dari konsep awal, manajemen anggaran, hingga koordinasi hari-H, kami siapkan segalanya.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <div class="bg-amber-50 text-amber-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657l-1.414-1.414m-1.414 1.414l-1.414-1.414m1.414-1.414l-1.414-1.414m1.414 1.414l-1.414-1.414M4 11l8 8 8-8M4 6l8 8 8-8"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Dekorasi & Venue</h3>
+                        <p class="text-gray-600">Kami bantu temukan venue terbaik dan ciptakan dekorasi menawan sesuai tema impian Anda.</p>
+                    </div>
+                    
+                    <div class="bg-white p-8 rounded-xl shadow-lg text-center transform hover:scale-105 transition duration-300">
+                        <div class="bg-amber-50 text-amber-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1m4-8h1m-1 4h1m-1 4h1"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Manajemen Vendor</h3>
+                        <p class="text-gray-600">Katering, MUA, Fotografer, dan MC terbaik ada dalam jaringan kami. Tak perlu pusing mencari.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="paket" class="py-20 bg-white relative overflow-hidden">
+            <div class="absolute inset-0 section-bg-pattern z-0"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Paket Pernikahan</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Kami memiliki beberapa pilihan paket yang bisa disesuaikan dengan kebutuhan Anda.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    
+                    <div class="border border-gray-200 rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-amber-800 mb-2">Paket Silver</h3>
+                            <p class="text-4xl font-bold text-gray-900 mb-4">Rp 50jt</p>
+                            <p class="text-gray-600 mb-6">Pilihan hemat untuk perayaan intim yang tak terlupakan.</p>
+                            <ul class="space-y-3 text-gray-700 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Venue & Dekorasi Basic</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Katering 100 pax</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>MUA & Busana</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto p-8 bg-gray-50">
+                            <button class="w-full bg-gray-200 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-300 transition duration-200">
+                                Hubungi Kami
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="border-2 border-amber-700 rounded-xl shadow-2xl overflow-hidden flex flex-col relative transform scale-105">
+                        <span class="absolute top-0 right-0 bg-amber-700 text-white text-xs font-bold px-4 py-1 rounded-bl-lg">Paling Populer</span>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-amber-800 mb-2">Paket Gold</h3>
+                            <p class="text-4xl font-bold text-gray-900 mb-4">Rp 100jt</p>
+                            <p class="text-gray-600 mb-6">Paket lengkap dengan vendor pilihan untuk perayaan meriah.</p>
+                            <ul class="space-y-3 text-gray-700 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Venue & Dekorasi Premium</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Katering 300 pax</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>MUA, Busana, & Fotografer</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Entertainment (MC & Band)</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto p-8 bg-stone-50">
+                            <button class="w-full bg-amber-700 text-white py-3 px-6 rounded-lg shadow font-semibold hover:bg-amber-800 transition duration-200">
+                                Pilih Paket Ini
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="border border-gray-200 rounded-xl shadow-lg overflow-hidden flex flex-col">
+                        <div class="p-8">
+                            <h3 class="text-2xl font-semibold text-amber-800 mb-2">Paket Platinum</h3>
+                            <p class="text-4xl font-bold text-gray-900 mb-4">Rp 200jt+</p>
+                            <p class="text-gray-600 mb-6">Kemewahan tanpa batas. Semua vendor terbaik untuk Anda.</p>
+                            <ul class="space-y-3 text-gray-700 mb-8">
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Venue Hotel Bintang 5</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Katering 500 pax (VIP)</li>
+                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Full Team Vendor (Foto, Video, MUA)</li>
+                            </ul>
+                        </div>
+                        <div class="mt-auto p-8 bg-stone-50">
+                            <button class="w-full bg-gray-200 text-gray-800 py-3 px-6 rounded-lg font-semibold hover:bg-gray-300 transition duration-200">
+                                Hubungi Kami
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeri" class="py-20 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Galeri Momen Bahagia</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Lihat beberapa momen indah yang telah kami bantu wujudkan.</p>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <img src="https://images.unsplash.com/photo-1519741497674-6114d1a3670c?fit=crop&w=600&q=80" alt="Galeri Pernikahan 1" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1522057310463-a81d39b0b14b?fit=crop&w=600&q=80" alt="Galeri Pernikahan 2" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1553011312-32f641a2a433?fit=crop&w=600&q=80" alt="Galeri Pernikahan 3" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1578310065484-c81c6bc9a2d8?fit=crop&w=600&q=80" alt="Galeri Pernikahan 4" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?fit=crop&w=1200&q=80" alt="Galeri Pernikahan 5" class="rounded-lg shadow-md aspect-video object-cover md:col-span-2 transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?fit=crop&w=600&q=80" alt="Galeri Pernikahan 6" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?fit=crop&w=600&q=80" alt="Galeri Pernikahan 7" class="rounded-lg shadow-md aspect-video object-cover transition-transform duration-300 hover:scale-105">
+                </div>
+            </div>
+        </section>
+
+        <section id="testimoni" class="py-20 bg-amber-800 text-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-12">Apa Kata Klien Kami?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-xl">
+                        <p class="text-lg italic mb-6">"Tim WeddingOrg Pro luar biasa! Mereka mengurus semuanya dengan sangat profesional. Pernikahan kami berjalan lancar tanpa stres sama sekali. Terima kasih!"</p>
+                        <p class="font-semibold text-xl">- Rian & Siska -</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-xl">
+                        <p class="text-lg italic mb-6">"Dekorasinya melebihi ekspektasi kami. Benar-benar seperti di negeri dongeng. Komunikasi dengan tim juga sangat mudah dan ramah. Sangat direkomendasikan!"</p>
+                        <p class="font-semibold text-xl">- Budi & Citra -</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lokasi" class="py-20 bg-stone-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Temukan Kami</h2>
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">Kunjungi galeri dan kantor kami untuk konsultasi langsung.</p>
+                </div>
+                
+                <div class="relative w-full h-[300px] md:h-[450px] rounded-xl shadow-2xl overflow-hidden border-4 border-white">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956131476882!3d-6.194420395514652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f43a9f4c3147%3A0x72713f412aec0f66!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1675752185231!5m2!1sid!2sid" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 w-full h-full"
+                    ></iframe>
+                    </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="kontak" class="bg-gray-900 text-gray-300 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+            
+            <div>
+                <h3 class="text-2xl font-bold text-white mb-4">WeddingOrg Pro</h3>
+                <p class="mb-4">Kami adalah tim profesional yang berdedikasi untuk menciptakan hari pernikahan paling berkesan dalam hidup Anda. </p>
+                <p><strong>Email:</strong> info@weddingorg.pro</p>
+                <p><strong>Telepon:</strong> (021) 1234 5678</p>
+            </div>
+            
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Navigasi</h4>
+                <ul class="space-y-2">
+                    <li><a href="#layanan" class="hover:text-amber-400 transition">Layanan</a></li>
+                    <li><a href="#paket" class="hover:text-amber-400 transition">Paket</a></li>
+                    <li><a href="#galeri" class="hover:text-amber-400 transition">Galeri</a></li>
+                    <li><a href="#testimoni" class="hover:text-amber-400 transition">Testimoni</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-xl font-semibold text-white mb-4">Ikuti Kami</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition p-2 bg-gray-700 rounded-full">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition p-2 bg-gray-700 rounded-full">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.667 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.667 4.771 4.919 4.919 1.266-.058 1.646.07 4.85.07zm0-2.163C8.74 0 8.333.012 7.053.072 2.695.272.273 2.69.073 7.052.012 8.333 0 8.74 0 12s.012 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.28.06 1.687.072 4.947.072s3.667-.012 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.06-1.28.072-1.687.072-4.947s-.012-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98C15.667.012 15.26 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition p-2 bg-gray-700 rounded-full">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-12 border-t border-gray-800 pt-8">
+            <p class="text-center text-gray-500 text-sm">
+                © 2025 WeddingOrg Pro. Semua Hak Cipta Dilindungi.
+            </p>
+        </div>
+    </footer>
+
+    <div id="auth-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+        <div id="modal-backdrop" class="fixed inset-0 bg-black bg-opacity-50 modal-backdrop"></div>
+        
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-md modal-content z-10">
+            
+            <div id="login-form-container">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-2xl font-semibold text-gray-900">Login Klien</h3>
+                    <button id="modal-close-btn" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                
+                <form id="login-form" class="p-6 space-y-4">
+                    <div>
+                        <label for="login-email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="login-email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="nama@email.com" required>
+                    </div>
+                    <div>
+                        <label for="login-password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="login-password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div id="login-error" class="text-red-600 text-sm hidden"></div>
+                    
+                    <button type="submit" class="w-full bg-amber-700 text-white py-3 rounded-lg font-semibold hover:bg-amber-800 transition duration-200">
+                        Login
+                    </button>
+                    
+                    <div class="text-sm text-center text-gray-600">
+                        Belum punya akun? 
+                        <button type="button" id="show-register-form" class="font-medium text-amber-700 hover:underline">
+                            Daftar di sini
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="register-form-container" class="hidden">
+                <div class="flex justify-between items-center p-6 border-b">
+                    <h3 class="text-2xl font-semibold text-gray-900">Daftar Akun Baru</h3>
+                    <button id="modal-close-btn-register" class="text-gray-400 hover:text-gray-600">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                </div>
+                
+                <form id="register-form" class="p-6 space-y-4">
+                    <div>
+                        <label for="register-name" class="block mb-2 text-sm font-medium text-gray-700">Nama Lengkap</label>
+                        <input type="text" id="register-name" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="Nama Anda" required>
+                    </div>
+                    <div>
+                        <label for="register-email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="register-email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="nama@email.com" required>
+                    </div>
+                    <div>
+                        <label for="register-password" class="block mb-2 text-sm font-medium text-gray-700">Buat Password</label>
+                        <input type="password" id="register-password" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="••••••••" required>
+                    </div>
+                    
+                    <div id="register-error" class="text-red-600 text-sm hidden"></div>
+                    <div id="register-success" class="text-green-600 text-sm hidden"></div>
+
+                    <button type="submit" class="w-full bg-amber-700 text-white py-3 rounded-lg font-semibold hover:bg-amber-800 transition duration-200">
+                        Daftar
+                    </button>
+                    
+                    <div class="text-sm text-center text-gray-600">
+                        Sudah punya akun? 
+                        <button type="button" id="show-login-form" class="font-medium text-amber-700 hover:underline">
+                            Login di sini
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Navigasi Mobile ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Tutup menu mobile saat link di-klik
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // --- Logika Modal (Pop-up Login/Register) ---
+            const authModal = document.getElementById('auth-modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const loginFormContainer = document.getElementById('login-form-container');
+            const registerFormContainer = document.getElementById('register-form-container');
+            
+            // Tombol-tombol untuk membuka modal
+            const openModalBtns = [
+                document.getElementById('login-register-btn'),
+                document.getElementById('login-register-btn-mobile')
+            ];
+
+            // Tombol-tombol untuk menutup modal
+            const closeModalBtns = [
+                document.getElementById('modal-close-btn'),
+                document.getElementById('modal-close-btn-register'),
+                modalBackdrop
+            ];
+
+            // Tombol-tombol untuk ganti form
+            const showRegisterBtn = document.getElementById('show-register-form');
+            const showLoginBtn = document.getElementById('show-login-form');
+
+            // Fungsi untuk membuka modal
+            const openModal = () => {
+                // Reset ke form login dulu
+                loginFormContainer.classList.remove('hidden');
+                registerFormContainer.classList.add('hidden');
+                authModal.classList.remove('hidden');
+                
+                // Efek fade-in
+                setTimeout(() => {
+                    modalBackdrop.classList.remove('opacity-0');
+                    authModal.querySelector('.modal-content').classList.remove('transform', 'scale-95', 'opacity-0');
+                    authModal.querySelector('.modal-content').classList.add('transform', 'scale-100', 'opacity-100');
+                }, 10);
+            };
+
+            // Fungsi untuk menutup modal
+            const closeModal = () => {
+                modalBackdrop.classList.add('opacity-0');
+                authModal.querySelector('.modal-content').classList.add('transform', 'scale-95', 'opacity-0');
+                
+                setTimeout(() => {
+                    authModal.classList.add('hidden');
+                }, 300); // Sesuaikan dengan durasi transisi
+            };
+            
+            // Pasang event listener
+            openModalBtns.forEach(btn => btn.addEventListener('click', openModal));
+            closeModalBtns.forEach(btn => btn.addEventListener('click', closeModal));
+
+            // Ganti ke form Register
+            showRegisterBtn.addEventListener('click', () => {
+                loginFormContainer.classList.add('hidden');
+                registerFormContainer.classList.remove('hidden');
+            });
+
+            // Ganti ke form Login
+            showLoginBtn.addEventListener('click', () => {
+                registerFormContainer.classList.add('hidden');
+                loginFormContainer.classList.remove('hidden');
+            });
+
+
+            // --- Logika Submit Form (Contoh Sederhana) ---
+            
+            // Form Login
+            const loginForm = document.getElementById('login-form');
+            const loginError = document.getElementById('login-error');
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                loginError.classList.add('hidden');
+                
+                const email = document.getElementById('login-email').value;
+                const password = document.getElementById('login-password').value;
+
+                // Simulasi validasi
+                if (email === "klien@gmail.com" && password === "123456") {
+                    alert('Login berhasil! (Ini hanya simulasi)');
+                    closeModal();
+                    loginForm.reset();
+                } else {
+                    loginError.textContent = 'Email atau password salah. (Coba: klien@gmail.com / 123456)';
+                    loginError.classList.remove('hidden');
+                }
+            });
+
+            // Form Register
+            const registerForm = document.getElementById('register-form');
+            const registerError = document.getElementById('register-error');
+            const registerSuccess = document.getElementById('register-success');
+            
+            registerForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                registerError.classList.add('hidden');
+                registerSuccess.classList.add('hidden');
+
+                const name = document.getElementById('register-name').value;
+                const email = document.getElementById('register-email').value;
+                const password = document.getElementById('register-password').value;
+
+                if (!name || !email || !password) {
+                    registerError.textContent = 'Semua field wajib diisi.';
+                    registerError.classList.remove('hidden');
+                    return;
+                }
+
+                // Simulasi berhasil
+                registerSuccess.textContent = 'Registrasi berhasil! Silakan login.';
+                registerSuccess.classList.remove('hidden');
+                
+                // Pindahkan ke form login setelah 2 detik
+                setTimeout(() => {
+                    registerForm.reset();
+                    registerFormContainer.classList.add('hidden');
+                    loginFormContainer.classList.remove('hidden');
+                    registerSuccess.classList.add('hidden');
+                }, 2000);
+            });
+
+        });
+    </script>
+
+</body>
+</html>

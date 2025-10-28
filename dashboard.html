@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Klien - WeddingOrg Pro</title>
+    
+    <!-- Impor Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Impor Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #a8a29e; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #78716c; }
+
+        /* Style Flatpickr */
+        .flatpickr-day.disabledDate, .flatpickr-day.disabledDate:hover { background-color: #fecaca !important; border-color: #fca5a5 !important; color: #b91c1c !important; cursor: not-allowed; text-decoration: line-through; }
+        .flatpickr-input { cursor: pointer; background-color: white; }
+
+        /* Style untuk Client Checklist */
+        .client-checklist-item { display: flex; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid #e5e7eb; /* gray-200 */ }
+        .client-checklist-item:last-child { border-bottom: none; }
+        .client-checklist-icon { margin-right: 0.75rem; width: 1.25rem; /* w-5 */ height: 1.25rem; /* h-5 */ flex-shrink: 0; }
+        .client-checklist-text { color: #374151; /* gray-700 */ }
+        .client-checklist-text.done { text-decoration: line-through; color: #6b7280; /* gray-500 */ }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            <a href="index.html" class="text-3xl font-bold text-amber-800">WeddingOrg Pro</a>
+            <div class="flex items-center space-x-4">
+                <span id="welcome-message" class="text-gray-700 hidden md:block">Selamat datang!</span>
+                <button id="logout-btn" class="bg-red-600 text-white py-2 px-5 rounded-lg shadow font-semibold hover:bg-red-700 transition duration-200">
+                    Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="flex-grow bg-stone-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div id="loading-message" class="text-center py-20">
+                <p class="text-xl text-gray-600">Memuat data dashboard Anda...</p>
+            </div>
+            
+            <!-- 1. Bagian Pemilihan Paket (Jika Belum Pesan) -->
+            <section id="package-selection-section" class="hidden">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8">Pilih Paket Pernikahan Anda</h2>
+                <div id="package-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Daftar paket -->
+                </div>
+            </section>
+            
+            <!-- 2. Bagian Status Pesanan & Progress (Jika Sudah Pesan) -->
+            <section id="order-status-section" class="hidden space-y-8">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Status Pesanan Anda</h2>
+                    <div id="order-details" class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                        <!-- Status pesanan -->
+                    </div>
+                </div>
+
+                <!-- Form Konfirmasi -->
+                <div id="confirmation-form-container" class="hidden">
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-4">Konfirmasi Pembayaran</h3>
+                    <form id="confirmation-form" class="bg-white p-6 md:p-8 rounded-xl shadow-lg space-y-4">
+                        <div id="confirmation-error" class="text-red-600 text-sm hidden"></div>
+                        <div id="confirmation-success" class="text-green-600 text-sm hidden"></div>
+                        <div>
+                            <label for="jumlah-bayar" class="block mb-2 text-sm font-medium text-gray-700">Jumlah Dibayar (Rp)</label>
+                            <input type="number" id="jumlah-bayar" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500" required>
+                        </div>
+                        <div>
+                            <label for="bukti-bayar" class="block mb-2 text-sm font-medium text-gray-700">Upload Bukti (JPG/PNG)</label>
+                            <input type="file" id="bukti-bayar" accept="image/png, image/jpeg" class="w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none" required>
+                        </div>
+                        <button type="submit" class="w-full bg-amber-700 text-white py-3 rounded-lg font-semibold hover:bg-amber-800 transition duration-200">
+                            Kirim Konfirmasi
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Bagian Progress Checklist -->
+                 <div id="progress-checklist-section" class="hidden">
+                     <h3 class="text-2xl font-semibold text-gray-900 mb-4">Progress Persiapan</h3>
+                     <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg">
+                         <div id="client-checklist-items" class="space-y-1">
+                             <p class="text-gray-500 text-sm">Memuat progress...</p>
+                         </div>
+                         <p id="client-checklist-message" class="text-xs text-gray-400 mt-4"></p> 
+                     </div>
+                 </div>
+
+            </section>
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-gray-500 text-sm">&copy; 2025 WeddingOrg Pro. Klien Area.</p>
+        </div>
+    </footer>
+
+    <!-- Impor Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/id.js"></script>
+
+    <!-- JavaScript Aplikasi -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const API_URL = 'http://localhost:3000/api';
+            const token = localStorage.getItem('token');
+            const user = JSON.parse(localStorage.getItem('user'));
+
+            if (!token || !user) { alert('Harus login.'); window.location.href = 'index.html'; return; }
+            if (user.role === 'admin') { alert('Admin tidak bisa akses.'); window.location.href = 'admin.html'; return; }
+
+            const loadingMessage = document.getElementById('loading-message');
+            const welcomeMessage = document.getElementById('welcome-message');
+            const packageSelectionSection = document.getElementById('package-selection-section');
+            const orderStatusSection = document.getElementById('order-status-section');
+            const packageList = document.getElementById('package-list');
+            const orderDetails = document.getElementById('order-details');
+            const confirmationFormContainer = document.getElementById('confirmation-form-container');
+            const confirmationForm = document.getElementById('confirmation-form');
+            const progressChecklistSection = document.getElementById('progress-checklist-section');
+            const clientChecklistItemsEl = document.getElementById('client-checklist-items');
+            const clientChecklistMessage = document.getElementById('client-checklist-message');
+
+            let bookedDates = []; 
+
+            // --- Fungsi Pembantu ---
+            const formatRupiah = (angka) => {/*...*/ const num = Number(angka); if (isNaN(num)) return 'Rp 0'; return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(num); };
+            const formatDateLong = (dateString) => {/*...*/ if (!dateString) return '-'; return new Date(dateString).toLocaleDateString('id-ID', { year: 'numeric', month: 'long', day: 'numeric' }); };
+
+            // --- Fungsi Menampilkan Status Pesanan ---
+            const displayOrderStatus = (order) => {
+                console.log("Displaying order status for:", order); // DEBUG
+                let statusClass = ''; let statusText = '';
+                confirmationFormContainer.classList.add('hidden'); 
+
+                switch (order.status_pembayaran) {
+                    case 'Belum Bayar': statusClass = 'bg-yellow-100 text-yellow-800'; statusText = 'Menunggu Pembayaran'; displayConfirmationForm(order.order_id); break;
+                    case 'Menunggu Konfirmasi': statusClass = 'bg-blue-100 text-blue-800'; statusText = 'Menunggu Konfirmasi Admin'; break;
+                    case 'Lunas': statusClass = 'bg-green-100 text-green-800'; statusText = `Telah Dikonfirmasi (Lunas)`; break;
+                    case 'Ditolak': statusClass = 'bg-red-100 text-red-800'; statusText = 'Pembayaran Ditolak'; displayConfirmationForm(order.order_id); break;
+                }
+
+                orderDetails.innerHTML = `
+                    <div class="flex flex-col md:flex-row justify-between items-start mb-4 gap-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-900">${order.nama_paket || 'Nama Paket Error'}</h3>
+                            <p class="text-gray-600">Tanggal Pernikahan: <strong>${formatDateLong(order.tanggal_pernikahan)}</strong></p>
+                            <p class="text-gray-600">Total Biaya: <strong>${formatRupiah(order.total_harga)}</strong></p>
+                        </div>
+                        <span class="flex-shrink-0 py-1 px-4 rounded-full font-semibold text-sm ${statusClass}">${statusText}</span>
+                    </div>
+                    ${order.status_pembayaran === 'Menunggu Konfirmasi' ? `<div class="mt-4 border-t pt-4"><p class="text-gray-700">Telah upload bukti ${formatRupiah(order.jumlah_bayar_klien || 0)}. Mohon tunggu verifikasi.</p>${order.bukti_bayar_url ? `<a href="http://localhost:3000/${order.bukti_bayar_url.replace(/\\/g, "/")}" target="_blank" class="text-amber-700 hover:underline text-sm">Lihat Bukti</a>` : ''}</div>` : ''}
+                    ${order.status_pembayaran === 'Lunas' ? `<div class="mt-4 border-t pt-4"><p class="text-green-700 font-semibold">Pembayaran Lunas. Status Pesanan: <strong>${order.status_pesanan}</strong>.</p></div>` : ''}
+                    ${order.status_pembayaran === 'Ditolak' ? `<div class="mt-4 border-t pt-4"><p class="text-red-700 font-semibold">Pembayaran ditolak. Unggah ulang bukti.</p>${order.bukti_bayar_url ? `<a href="http://localhost:3000/${order.bukti_bayar_url.replace(/\\/g, "/")}" target="_blank" class="text-amber-700 hover:underline text-sm">Lihat Bukti Lama</a>` : ''}</div>` : ''}
+                `;
+
+                // Panggil render checklist klien jika data task ada dan status sesuai
+                if ((order.status_pesanan === 'Dikonfirmasi' || order.status_pesanan === 'Persiapan') && order.tasks && Array.isArray(order.tasks)) {
+                    console.log("Order confirmed/preparing, showing checklist section."); // DEBUG
+                    progressChecklistSection.classList.remove('hidden');
+                    renderClientChecklist(order.tasks);
+                } else {
+                    console.log("Checklist hidden. Status:", order.status_pesanan, "Tasks:", order.tasks); // DEBUG
+                    progressChecklistSection.classList.add('hidden');
+                }
+            };
+            
+            // --- Fungsi Tampilkan Form Konfirmasi ---
+            const displayConfirmationForm = (orderId) => { confirmationFormContainer.classList.remove('hidden'); confirmationForm.dataset.orderId = orderId; };
+
+            // --- Fungsi Memuat Paket ---
+            const loadPackages = async () => {
+                 console.log("Loading packages..."); // DEBUG
+                try {
+                    const response = await fetch(`${API_URL}/packages`);
+                    if (!response.ok) throw new Error('Gagal memuat paket.');
+                    const packages = await response.json();
+                    console.log("Packages loaded:", packages); // DEBUG
+                    packageList.innerHTML = ''; 
+                    const today = new Date().toISOString().split('T')[0];
+                    packages.forEach(pkg => {
+                        const card = document.createElement('div');
+                        card.className = 'bg-white p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-amber-500 transition duration-300 flex flex-col';
+                        card.innerHTML = `<div class="flex-grow"><h3 class="text-2xl font-semibold text-amber-800 mb-2">${pkg.nama_paket}</h3><p class="text-3xl font-bold text-gray-900 mb-4">${formatRupiah(pkg.harga)}</p><p class="text-gray-600 mb-6 min-h-[60px]">${pkg.deskripsi || ''}</p><label for="tanggal-${pkg.package_id}" class="block mb-1 text-sm font-medium text-gray-700">Pilih Tanggal:</label><input type="text" id="tanggal-${pkg.package_id}" placeholder="YYYY-MM-DD" class="date-picker w-full px-3 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-amber-500 flatpickr-input" readonly="readonly" required></div><button data-id="${pkg.package_id}" data-harga="${pkg.harga}" class="order-btn mt-auto w-full bg-amber-700 text-white py-3 px-6 rounded-lg shadow font-semibold hover:bg-amber-800 transition">Pesan Paket Ini</button>`;
+                        packageList.appendChild(card);
+                        const dateInput = document.getElementById(`tanggal-${pkg.package_id}`);
+                        // Inisialisasi Flatpickr
+                        flatpickr(dateInput, { 
+                            dateFormat: "Y-m-d", 
+                            minDate: "today", 
+                            disable: bookedDates, 
+                            locale: "id", 
+                            // Tambahkan class 'disabledDate' pada tanggal yang disable
+                            onDayCreate: (dObj, dStr, fp, dayElem) => { 
+                                const dayDateStr = dayElem.dateObj.toISOString().split('T')[0];
+                                if (bookedDates.includes(dayDateStr)) { 
+                                    dayElem.classList.add("disabledDate"); 
+                                    dayElem.title = "Tanggal sudah dipesan"; // Tooltip
+                                } 
+                            } 
+                        });
+                    });
+                } catch (error) { console.error("Error loading packages:", error); packageSelectionSection.innerHTML = `<p class="text-red-600">${error.message}</p>`; }
+            };
+
+            // --- Fungsi Render Checklist Klien ---
+            const renderClientChecklist = (tasks) => {
+                 console.log("Rendering client checklist:", tasks); // DEBUG
+                 clientChecklistItemsEl.innerHTML = ''; 
+                 if (!tasks || tasks.length === 0) {
+                      clientChecklistItemsEl.innerHTML = '<p class="text-gray-500 text-sm">Belum ada progress persiapan.</p>';
+                      clientChecklistMessage.textContent = '0 dari 0 tugas selesai.';
+                      return;
+                 }
+                 tasks.forEach(task => {
+                     const itemDiv = document.createElement('div');
+                     itemDiv.className = 'client-checklist-item';
+                     const iconSVG = task.is_done 
+                         ? `<svg class="client-checklist-icon text-green-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>` 
+                         : `<svg class="client-checklist-icon text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                     itemDiv.innerHTML = `${iconSVG}<span class="client-checklist-text ${task.is_done ? 'done' : ''}">${task.task_name}</span>`;
+                     clientChecklistItemsEl.appendChild(itemDiv);
+                 });
+                 const doneCount = tasks.filter(t => t.is_done).length;
+                 const totalCount = tasks.length;
+                 clientChecklistMessage.textContent = `${doneCount} dari ${totalCount} tugas selesai.`;
+                 console.log("Client checklist rendering complete."); // DEBUG
+            };
+            
+            // --- Fungsi Utama: Memuat Data Dasbor ---
+            const loadDashboardData = async () => {
+                 console.log("Loading dashboard data..."); // DEBUG
+                try {
+                    welcomeMessage.textContent = `Selamat datang, ${user.nama}!`;
+                    welcomeMessage.classList.remove('hidden'); 
+                    
+                    console.log("Fetching booked dates..."); // DEBUG
+                    const bookedResponse = await fetch(`${API_URL}/booked-dates`);
+                    if (bookedResponse.ok) {
+                         bookedDates = await bookedResponse.json(); 
+                         console.log("Booked dates:", bookedDates); // DEBUG
+                    } else {
+                         console.warn("Gagal load tanggal terisi.");
+                         bookedDates = [];
+                    }
+                    
+                    console.log("Fetching client order..."); // DEBUG
+                    const response = await fetch(`${API_URL}/client/my-order`, { headers: { 'x-auth-token': token } });
+                    if (!response.ok) {
+                         const errorText = await response.text();
+                         console.error("Failed to fetch client order:", response.status, errorText); // DEBUG
+                         throw new Error(`Gagal ambil data pesanan (${response.status})`);
+                    }
+                    const data = await response.json();
+                    console.log("Client order data:", data); // DEBUG
+                    
+                    if (data.order) {
+                        packageSelectionSection.classList.add('hidden');
+                        orderStatusSection.classList.remove('hidden');
+                        displayOrderStatus(data.order); 
+                    } else {
+                        packageSelectionSection.classList.remove('hidden');
+                        orderStatusSection.classList.add('hidden');
+                        await loadPackages(); 
+                    }
+                    loadingMessage.classList.add('hidden');
+                    console.log("Dashboard loading complete."); // DEBUG
+                } catch (error) { console.error('Error load dashboard:', error); loadingMessage.innerHTML = `<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg"><h3 class="font-bold text-lg">Error: ${error.message}</h3><p>Gagal memuat data.</p></div>`; }
+            };
+
+            // --- Handler: Memesan Paket ---
+            packageList.addEventListener('click', async (e) => {
+                if (e.target.classList.contains('order-btn')) {
+                    const btn=e.target; const pkgId=btn.dataset.id; const price=btn.dataset.harga; const tglInput=document.getElementById(`tanggal-${pkgId}`); const tgl=tglInput.value;
+                    console.log(`Order button clicked: pkgId=${pkgId}, price=${price}, date=${tgl}`); // DEBUG
+                    if (!tgl) { alert('Pilih tanggal dulu.'); return; }
+                    if (bookedDates.includes(tgl)) { alert('Tanggal sudah dipesan.'); tglInput._flatpickr?.open(); return; }
+                    if (!confirm(`Yakin pesan paket ini tgl ${tgl} seharga ${formatRupiah(price)}?`)) return;
+                    btn.disabled = true; btn.textContent = 'Memproses...';
+                    try {
+                        console.log("Sending order request..."); // DEBUG
+                        const res = await fetch(`${API_URL}/client/orders`, { method: 'POST', headers: {'Content-Type':'application/json','x-auth-token':token}, body: JSON.stringify({package_id:pkgId, tanggal_pernikahan:tgl, total_harga:price}) });
+                        const order = await res.json(); 
+                        if (!res.ok) { console.error("Order failed:", order); throw new Error(order.message || 'Gagal.'); }
+                        console.log("Order successful:", order); // DEBUG
+                        packageSelectionSection.classList.add('hidden'); orderStatusSection.classList.remove('hidden'); displayOrderStatus(order); alert('Pesanan berhasil! Silakan bayar.');
+                    } catch (err) { console.error("Order error:", err); alert(`Error: ${err.message}`); btn.disabled = false; btn.textContent = 'Pesan Paket Ini'; }
+                }
+            });
+            
+            // --- Handler: Konfirmasi Pembayaran ---
+            confirmationForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); const orderId = e.target.dataset.orderId; const amount = document.getElementById('jumlah-bayar').value; const file = document.getElementById('bukti-bayar').files[0]; const btn = confirmationForm.querySelector('button[type="submit"]'); const errEl = document.getElementById('confirmation-error'); const succEl = document.getElementById('confirmation-success'); errEl.classList.add('hidden'); succEl.classList.add('hidden');
+                console.log(`Confirming payment: orderId=${orderId}, amount=${amount}, file=${file?.name}`); // DEBUG
+                if (!file) { errEl.textContent = 'Pilih file bukti.'; errEl.classList.remove('hidden'); return; }
+                btn.disabled = true; btn.textContent = 'Mengunggah...'; const formData = new FormData(); formData.append('orderId', orderId); formData.append('jumlahBayar', amount); formData.append('buktiBayar', file);
+                try {
+                     console.log("Sending confirmation request..."); // DEBUG
+                    const res = await fetch(`${API_URL}/client/orders/confirm`, { method: 'POST', headers: {'x-auth-token': token}, body: formData });
+                    const data = await res.json(); 
+                    if (!res.ok) { console.error("Confirmation failed:", data); throw new Error(data.message || 'Gagal.'); }
+                    console.log("Confirmation successful:", data); // DEBUG
+                    succEl.textContent = 'Upload berhasil! Reloading...'; succEl.classList.remove('hidden'); confirmationForm.reset(); setTimeout(() => window.location.reload(), 2000);
+                } catch (err) { console.error("Confirmation error:", err); errEl.textContent = err.message; errEl.classList.remove('hidden'); btn.disabled = false; btn.textContent = 'Kirim Konfirmasi'; }
+            });
+
+            // --- Handler: Logout ---
+            document.getElementById('logout-btn').addEventListener('click', () => { if (confirm('Yakin logout?')) { console.log("Logging out client..."); localStorage.removeItem('token'); localStorage.removeItem('user'); window.location.href = 'index.html'; } });
+
+            // --- Panggil fungsi utama ---
+            loadDashboardData();
+        });
+    </script>
+</body>
+</html>
+
