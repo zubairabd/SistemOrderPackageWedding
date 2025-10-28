@@ -2,7 +2,7 @@
 Aplikasi manajemen **Wedding Organizer (WO)** modern berbasis web yang dikembangkan menggunakan **Node.js (Express.js)** dan **PostgreSQL** sebagai backend, serta **HTML + TailwindCSS** di sisi frontend.  
 Aplikasi ini memungkinkan klien untuk memesan paket pernikahan, melakukan konfirmasi pembayaran, dan admin untuk mengelola pesanan serta memantau progres setiap acara.
 
-🌐 **Demo Website (Frontend):** [index.html](./index.html)
+🌐 **Demo Website (Frontend):** [https://zubairabd.github.io/SistemOrderPackageWedding/](https://zubairabd.github.io/SistemOrderPackageWedding/)
 
 ---
 
